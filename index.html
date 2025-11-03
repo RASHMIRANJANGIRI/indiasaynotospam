@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SayNoToSpam - Advanced Spam Detection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo-section">
+        <li><a href="#"><span class="logo-text"><b>SayNoToSpam</b></span></a></li>
+        <li><a href="#ds"><span>UseMe</span></a></li>
+        <li><a href="#ws"><span>Why</span></a></li>
+        <li><a href="#ts"><span>How</span></a></li>
+        <li><a href="#f"><span>AboutMe</span></a></li>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1><b>Because your time & money is too precious for </b><span class="hero-highlight"><b>spammy
+            nonsense</b></span>
+      </h1>
+      <p>We use AI to analyze billions of messages and emails, helping protect users from spam, phishing, and
+        malicious content.</p>
+      <p>This is especially important because spam sites can harm or mislead people.</p>
+
+      <div class="feature-pills">
+        <div class="pill">SAY</div>
+        <div class="pill">NO TO</div>
+        <div class="pill">SPAM</div>
+      </div>
+    </div>
+    <!-- HTML -->
+    <div class="hero-visual">
+      <div class="video-placeholder">
+        <!-- Important: include muted, playsinline and (optionally) loop for best autoplay behavior -->
+        <video id="demoVideo" src="spam.mp4" autoplay muted playsinline loop preload="metadata">
+          Your browser does not support the video tag.
+        </video>
+        <!-- Optional overlay content -->
+        <div class="video-overlay">
+          <!-- <h2>Try our spam detection</h2>
+      <p>Analyze suspicious messages quickly</p> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Small JS to attempt play and gracefully handle autoplay blocking -->
+    <script>
+      (function () {
+        const v = document.getElementById('demoVideo');
+        if (!v) return;
+        // Try to play. Some browsers may still block; catch errors silently.
+        const tryPlay = () => {
+          v.play().catch((err) => {
+            // Autoplay blocked or other error — keep muted to improve chances, or show a play button if needed.
+            console.warn('Video playback failed:', err);
+          });
+        };
+
+        // Try on load & on user interaction (in case autoplay blocked)
+        window.addEventListener('load', tryPlay);
+        document.addEventListener('click', tryPlay, { once: true });
+        document.addEventListener('touchstart', tryPlay, { once: true });
+      })();
+    </script>
+
+  </section>
+
+  <section class="detection-section" id="ds">
+    <div class="detection-container">
+      <div class="section-header">
+        <h2 class="section-title"><b>Try our spam detection</b></h2>
+      </div>
+
+      <div class="detection-tabs">
+        <button class="detection-tab active" data-tab="whatsapp">
+          <img src="icons8-whatsapp-48.png" alt="whatsapp">WhatsApp Detection
+        </button>
+        <button class="detection-tab" data-tab="gmail">
+          <img src="icons8-gmail-100.png" alt="gmail">Email Detection
+        </button>
+        <button class="detection-tab" data-tab="sms">
+          <img src="icons8-message-48.png" alt="sms">SMS Detection
+        </button>
+      </div>
+
+      <div class="detection-panel active" id="whatsapp-panel">
+        <div class="panel-header">
+          <h3 class="panel-title">WhatsApp Spam Analysis</h3>
+          <p class="panel-subtitle">Analyze suspicious WhatsApp messages for spam and phishing attempts</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wa-phone">Phone Number</label>
+          <input type="tel" id="wa-phone" class="form-input" placeholder="+91 09876 54321" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wa-message">Message Content</label>
+          <textarea id="wa-message" class="form-textarea" placeholder="Paste the suspicious message here..."></textarea>
+        </div>
+
+        <div class="terms-group">
+          <input type="checkbox" id="wa-terms" class="terms-checkbox">
+          <label for="wa-terms" class="terms-label">
+            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
+              href="privacy-policy.html" target="_blank">Privacy Policy</a>
+            <p>
+              By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
+              The service is provided "as is" without warranties, and you use it at your own risk.
+              Please review results carefully before relying on them.
+            </p>
+
+          </label>
+        </div>
+
+        <button class="analyze-button" id="wa-analyze" disabled>Analyze Message</button>
+
+        <div class="result-box" id="wa-result"></div>
+      </div>
+
+      <div class="detection-panel" id="gmail-panel">
+        <div class="panel-header">
+          <h3 class="panel-title">Email Spam Analysis</h3>
+          <p class="panel-subtitle">Detect spam and phishing attempts in email messages</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email-sender">Sender Email Address</label>
+          <input type="email" id="email-sender" class="form-input" placeholder="sender@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email-content">Email Content</label>
+          <textarea id="email-content" class="form-textarea" placeholder="Paste the email content here..."></textarea>
+        </div>
+
+        <div class="terms-group">
+          <input type="checkbox" id="email-terms" class="terms-checkbox">
+          <label for="email-terms" class="terms-label">
+            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
+              href="privacy-policy.html" target="_blank">Privacy Policy</a>
+              <p>
+              By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
+              The service is provided "as is" without warranties, and you use it at your own risk.
+              Please review results carefully before relying on them.
+            </p>
+          </label>
+        </div>
+
+        <button class="analyze-button" id="email-analyze" disabled>Analyze Email</button>
+
+        <div class="result-box" id="email-result"></div>
+      </div>
+
+      <div class="detection-panel" id="sms-panel">
+        <div class="panel-header">
+          <h3 class="panel-title">SMS Spam Analysis</h3>
+          <p class="panel-subtitle">Analyze suspicious SMS messages for spam and phishing attempts</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="sms-sender">Sender ID</label>
+          <input type="text" id="sms-sender" class="form-input" placeholder="ML-NOSPAM-P" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="sms-content">Message Content</label>
+          <textarea id="sms-content" class="form-textarea"
+            placeholder="Paste the suspicious message here..."></textarea>
+        </div>
+
+        <div class="terms-group">
+          <input type="checkbox" id="sms-terms" class="terms-checkbox">
+          <label for="sms-terms" class="terms-label">
+            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
+              href="privacy-policy.html" target="_blank">Privacy Policy</a>
+              <p>
+              By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
+              The service is provided "as is" without warranties, and you use it at your own risk.
+              Please review results carefully before relying on them.
+            </p>
+          </label>
+        </div>
+
+        <button class="analyze-button" id="sms-analyze" disabled>Analyze Message</button>
+
+        <div class="result-box" id="sms-result"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="why-section" id="ws">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><b>Why we fight against spam</b></h2>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-highlight">
+          <div class="stat-number">INR 817 crore</div>
+          <div class="stat-text">
+            Official data: Delhi lost this amount to cyber fraud in 2024 alone.
+            <div class="stat-source">Lok Sabha Official Data</div>
+          </div>
+          <div class="stat-number">₹22,845.73 crore</div>
+          <div class="stat-text">
+            Estimated financial impact of spam and cyber fraud on Indian citizens and businesses in 2024.
+          </div>
+        </div>
+
+        <div class="why-content">
+          <div class="description-text">
+            <p>
+              We fight against spam because not every platform gives you full protection.
+              Gmail has a built-in spam folder, and Truecaller helps identify unknown numbers,
+              but there’s no reliable way to detect spam on WhatsApp messages or across all
+              platforms together. That’s why we built <strong>SayNoToSpam</strong> — a single tool
+              that helps you check and detect spam in <strong>Gmail, WhatsApp, SMS </strong>
+              easily and safely.
+            </p>
+            <p style="margin-top: 1rem;">
+              With SayNoToSpam, we aim to reduce such losses by helping people identify and avoid
+              digital scams before it’s too late.
+            </p>
+          </div>
+
+          <div class="why-image">
+            <img src="Gemini_Generated_Image_mclyw7mclyw7mcly (1).png" alt="People fighting spam illustration">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="target-section" id="ts">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title"><b>How we target spam</b></h2>
+        <p class="description-text" style="max-width: 800px; margin: 1rem auto 0; text-align: center;">
+          <strong>SayNoToSpam</strong> A message, number, or email is flagged as spam based on a combination of
+          automated AI analysis and predefined rules, users can request
+          a review after Analyze the result.
+        </p>
+
+      </div>
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-icon">🎯</div>
+          <h3 class="method-title">Automated detection</h3>
+          <p class="method-desc">Our automated systems use billions of user search results and AI to detect
+            and filter out spammy content.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📊</div>
+          <h3 class="method-title">Behavioral Detection</h3>
+          <p class="method-desc">Monitors sending patterns and user behavior to identify automated spam campaigns and
+            malicious activities.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🔗</div>
+          <h3 class="method-title">Link Safety Check</h3>
+          <p class="method-desc">Automatically scans and verifies URLs for malicious content, redirects, and known
+            phishing domains.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🌐</div>
+          <h3 class="method-title">Multi-language Support</h3>
+          <p class="method-desc">Detects spam across multiple languages and regional variations with high accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="f">
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4 class="footer-heading">Connect</h4>
+        <ul class="footer-list">
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="newsletter-signup.html">Newsletter Signup</a></li>
+          <li><a href="linkedin.html">Follow on LinkedIn</a></li>
+          <li><a href="twitter.html">Follow on Twitter</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">About SayNoToSpam</h4>
+        <ul class="footer-list">
+          <li><a href="our-mission.html">Our Mission</a></li>
+          <li><a href="how-we-protect.html">How We Protect You</a></li>
+          <li><a href="meet-the-team.html">Meet the Team</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Resources</h4>
+        <ul class="footer-list">
+          <li><a href="blog-insights.html">Blog & Insights</a></li>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="security-guidelines.html">Security Guidelines</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-heading">Solutions</h4>
+        <ul class="footer-list">
+          <li><a href="email-protection.html">Email Protection</a></li>
+          <li><a href="messaging-security.html">Messaging Security</a></li>
+          <li><a href="fraud-detection.html">Fraud Detection</a></li>
+          <li><a href="whatsapp.html">whatsApp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-list">
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="press.html">Press</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 <b>SayNoToSpam</b>. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.detection-tab');
+    const panels = document.querySelectorAll('.detection-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(target + '-panel').classList.add('active');
+      });
+    });
+
+    function showResult(id, type, icon, title, content) {
+      const el = document.getElementById(id);
+      el.className = `result-box ${type}`;
+      el.innerHTML = `
+        <div class="result-header">
+          <span class="result-icon">${icon}</span>
+          <h4 class="result-title">${title}</h4>
+        </div>
+        <div class="result-content">${content}</div>
+      `;
+      el.style.display = 'block';
+    }
+
+    // WhatsApp Analysis
+    document.getElementById('wa-analyze').addEventListener('click', async () => {
+      const phone = document.getElementById('wa-phone').value.trim();
+      const message = document.getElementById('wa-message').value.trim();
+
+      if (!message) {
+        alert('Please enter message content');
+        return;
+      }
+
+      showResult('wa-result', 'warning', '⏳', 'Analyzing...', '<p>Processing your message with AI models...</p>');
+
+      const analyzeBtn = document.getElementById('wa-analyze');
+      analyzeBtn.disabled = true;
+      analyzeBtn.textContent = 'Analyzing...';
+
+      try {
+        const res = await fetch('/api/check/whatsapp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phoneNumber: phone, message })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (data.success) {
+          const { isSpam, confidence, recommendation, reasons } = data.result;
+          const reasonsHtml = reasons ? reasons.map(r => `<li>${r}</li>`).join('') : '';
+
+          showResult(
+            'wa-result',
+            isSpam ? 'spam' : 'safe',
+            isSpam ? '🚫' : '✅',
+            isSpam ? 'Spam Detected' : 'Message Appears Safe',
+            `
+              <p><strong>Confidence:</strong> ${confidence}</p>
+              <p><strong>Recommendation:</strong> ${recommendation}</p>
+              ${reasonsHtml ? `<p><strong>Reasons:</strong><ul>${reasonsHtml}</ul></p>` : ''}
+            `
+          );
+        } else {
+          showResult('wa-result', 'warning', '⚠️', 'Error', `<p>${data.error}</p>`);
+        }
+      } catch (err) {
+        console.error('Analysis error:', err);
+        showResult('wa-result', 'warning', '🔌', 'Connection Error', '<p>Unable to reach server. Please make sure the server is running.</p>');
+      } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Message';
+      }
+    });
+
+    // Email Analysis
+    document.getElementById('email-analyze').addEventListener('click', async () => {
+      const sender = document.getElementById('email-sender').value.trim();
+      const content = document.getElementById('email-content').value.trim();
+
+      if (!content) {
+        alert('Please enter email content');
+        return;
+      }
+
+      showResult('email-result', 'warning', '⏳', 'Analyzing...', '<p>Processing your email with AI models...</p>');
+
+      const analyzeBtn = document.getElementById('email-analyze');
+      analyzeBtn.disabled = true;
+      analyzeBtn.textContent = 'Analyzing...';
+
+      try {
+        const res = await fetch('/api/check/gmail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sender, message: content })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (data.success) {
+          const { isSpam, confidence, recommendation, reasons } = data.result;
+          const reasonsHtml = reasons ? reasons.map(r => `<li>${r}</li>`).join('') : '';
+
+          showResult(
+            'email-result',
+            isSpam ? 'spam' : 'safe',
+            isSpam ? '🚫' : '✅',
+            isSpam ? 'Spam Detected' : 'Email Appears Safe',
+            `
+              <p><strong>Confidence:</strong> ${confidence}</p>
+              <p><strong>Recommendation:</strong> ${recommendation}</p>
+              ${reasonsHtml ? `<p><strong>Reasons:</strong><ul>${reasonsHtml}</ul></p>` : ''}
+            `
+          );
+        } else {
+          showResult('email-result', 'warning', '⚠️', 'Error', `<p>${data.error}</p>`);
+        }
+      } catch (err) {
+        console.error('Analysis error:', err);
+        showResult('email-result', 'warning', '🔌', 'Connection Error', '<p>Unable to reach server. Please make sure the server is running.</p>');
+      } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Email';
+      }
+    });
+
+    // SMS Analysis - ADD THIS MISSING FUNCTIONALITY
+    document.getElementById('sms-analyze').addEventListener('click', async () => {
+      const sender = document.getElementById('sms-sender').value.trim();
+      const content = document.getElementById('sms-content').value.trim();
+
+      if (!content) {
+        alert('Please enter SMS content');
+        return;
+      }
+
+      showResult('sms-result', 'warning', '⏳', 'Analyzing...', '<p>Processing your SMS with AI models...</p>');
+
+      const analyzeBtn = document.getElementById('sms-analyze');
+      analyzeBtn.disabled = true;
+      analyzeBtn.textContent = 'Analyzing...';
+
+      try {
+        const res = await fetch('/api/check/sms', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sender, message: content })
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (data.success) {
+          const { isSpam, confidence, recommendation, reasons } = data.result;
+          const reasonsHtml = reasons ? reasons.map(r => `<li>${r}</li>`).join('') : '';
+
+          showResult(
+            'sms-result',
+            isSpam ? 'spam' : 'safe',
+            isSpam ? '🚫' : '✅',
+            isSpam ? 'Spam Detected' : 'SMS Appears Safe',
+            `
+              <p><strong>Confidence:</strong> ${confidence}</p>
+              <p><strong>Recommendation:</strong> ${recommendation}</p>
+              ${reasonsHtml ? `<p><strong>Reasons:</strong><ul>${reasonsHtml}</ul></p>` : ''}
+            `
+          );
+        } else {
+          showResult('sms-result', 'warning', '⚠️', 'Error', `<p>${data.error}</p>`);
+        }
+      } catch (err) {
+        console.error('Analysis error:', err);
+        showResult('sms-result', 'warning', '🔌', 'Connection Error', '<p>Unable to reach server. Please make sure the server is running.</p>');
+      } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = 'Analyze Message';
+      }
+    });
+
+    // Terms and conditions functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      // WhatsApp terms
+      const waTerms = document.getElementById('wa-terms');
+      const waAnalyze = document.getElementById('wa-analyze');
+
+      // Email terms
+      const emailTerms = document.getElementById('email-terms');
+      const emailAnalyze = document.getElementById('email-analyze');
+
+      // SMS terms
+      const smsTerms = document.getElementById('sms-terms');
+      const smsAnalyze = document.getElementById('sms-analyze');
+
+      // Enable/disable buttons based on checkbox state
+      if (waTerms && waAnalyze) {
+        waTerms.addEventListener('change', function () {
+          waAnalyze.disabled = !this.checked;
+        });
+      }
+
+      if (emailTerms && emailAnalyze) {
+        emailTerms.addEventListener('change', function () {
+          emailAnalyze.disabled = !this.checked;
+        });
+      }
+
+      if (smsTerms && smsAnalyze) {
+        smsTerms.addEventListener('change', function () {
+          smsAnalyze.disabled = !this.checked;
+        });
+      }
+
+      // Reset terms when switching tabs
+      const tabs = document.querySelectorAll('.detection-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          // Uncheck all terms checkboxes when switching tabs
+          document.querySelectorAll('.terms-checkbox').forEach(checkbox => {
+            checkbox.checked = false;
+          });
+
+          // Disable all analyze buttons
+          document.querySelectorAll('.analyze-button').forEach(button => {
+            button.disabled = true;
+          });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
