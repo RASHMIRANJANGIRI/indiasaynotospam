@@ -2210,3 +2210,30 @@
   border-radius: 5px;
 }
 
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 55vh; /* or use any custom height, e.g., 500px */
+  overflow: hidden;
+  border-radius: 12px; /* optional, for rounded corners like your example */
+  background-color: #f1f3f4; /* fallback color while video loads */
+}
+
+.video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-placeholder video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* this ensures full coverage */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit; /* keeps rounded corners consistent */
+}
