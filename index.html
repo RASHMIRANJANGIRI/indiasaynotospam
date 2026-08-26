@@ -4,29 +4,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SayNoToSpam - Advanced Spam Detection</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="google-adsense-account" content="ca-pub-9243142342891029">
-  <!-- Other meta tags -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4HQVCEK8BN');
-  </script>
 
+  <!-- Primary SEO tags -->
+  <title>SayNoToSpam - AI Spam & Phishing Detection for WhatsApp, Email & SMS in India</title>
+  <meta name="description"
+    content="Detect spam, phishing, and fraud messages on WhatsApp, Gmail, and SMS with AI. Free spam checker built for India — protect yourself and your business from scams instantly." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="SayNoToSpam" />
+  <!-- IMPORTANT: replace with your real custom domain once you have one -->
+  <link rel="canonical" href="https://www.saynotospam.in/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.saynotospam.in/" />
+  <meta property="og:title" content="SayNoToSpam - AI Spam & Phishing Detection" />
+  <meta property="og:description"
+    content="Check WhatsApp, Email, and SMS messages for spam and phishing using AI — built for India." />
+  <meta property="og:image" content="https://www.saynotospam.in/og-image.jpg" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SayNoToSpam - AI Spam & Phishing Detection" />
+  <meta name="twitter:description"
+    content="Check WhatsApp, Email, and SMS messages for spam and phishing using AI — built for India." />
+  <meta name="twitter:image" content="https://www.saynotospam.in/og-image.jpg" />
+
+  <!-- Favicon (add real files when ready) -->
+  <link rel="icon" type="image/png" href="favicon-32x32 (1).png" />
+
+  <!-- Preload critical assets to improve LCP -->
+  <link rel="preload" as="style" href="style.css" />
+  <link rel="preload" as="image" href="favicon-16x16 (1).png" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Structured data: helps Google & AI engines understand what this site is -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SayNoToSpam",
+    "url": "https://www.saynotospam.in/",
+    "description": "AI-powered spam and phishing detection for WhatsApp, Email, and SMS in India.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
 </head>
 
 <body>
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo-section">
-        <li><a href="#"><span class="logo-text"><b>SayNoToSpam</b></span></a></li>
-        <li><a href="#ds"><span>UseMe</span></a></li>
-        <li><a href="#ws"><span>Why</span></a></li>
-        <li><a href="#ts"><span>How</span></a></li>
-        <li><a href="#f"><span>AboutMe</span></a></li>
+        <a href="#" class="logo-text"><b>SayNoToSpam</b></a>
+        <ul class="nav-links">
+          <li><a href="#ds">Try Detection</a></li>
+          <li><a href="#ws">Why It Matters</a></li>
+          <li><a href="#ts">How It Works</a></li>
+          <li><a href="#f">About</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -36,7 +78,7 @@
       <h1><b>Because your time & money is too precious for </b><span class="hero-highlight"><b>spammy
             nonsense</b></span>
       </h1>
-      <p>We use AI to analyze billions of messages and emails, helping protect users from spam, phishing, and
+      <p>We use AI to analyze messages and emails, helping protect users from spam, phishing, and
         malicious content.</p>
       <p>This is especially important because spam sites can harm or mislead people.</p>
 
@@ -46,41 +88,21 @@
         <div class="pill">SPAM</div>
       </div>
     </div>
-    <!-- HTML -->
+
     <div class="hero-visual">
       <div class="video-placeholder">
-        <!-- Important: include muted, playsinline and (optionally) loop for best autoplay behavior -->
-        <video id="demoVideo" src="spam.mp4" autoplay muted playsinline loop preload="metadata">
+        <!--
+          preload="none" + poster: nothing downloads until needed, and the poster
+          image shows instantly instead of a blank box. Compress spam.mp4 itself
+          (aim under ~1-2MB) and add a real spam-poster.jpg (a compressed still frame).
+        -->
+        <video id="demoVideo" width="640" height="360" poster="spam-poster.jpg"
+          autoplay muted playsinline loop preload="none">
+          <source src="spam.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <!-- Optional overlay content -->
-        <div class="video-overlay">
-          <!-- <h2>Try our spam detection</h2>
-      <p>Analyze suspicious messages quickly</p> -->
-        </div>
       </div>
     </div>
-
-    <!-- Small JS to attempt play and gracefully handle autoplay blocking -->
-    <script>
-      (function () {
-        const v = document.getElementById('demoVideo');
-        if (!v) return;
-        // Try to play. Some browsers may still block; catch errors silently.
-        const tryPlay = () => {
-          v.play().catch((err) => {
-            // Autoplay blocked or other error — keep muted to improve chances, or show a play button if needed.
-            console.warn('Video playback failed:', err);
-          });
-        };
-
-        // Try on load & on user interaction (in case autoplay blocked)
-        window.addEventListener('load', tryPlay);
-        document.addEventListener('click', tryPlay, { once: true });
-        document.addEventListener('touchstart', tryPlay, { once: true });
-      })();
-    </script>
-
   </section>
 
   <section class="detection-section" id="ds">
@@ -91,13 +113,16 @@
 
       <div class="detection-tabs">
         <button class="detection-tab active" data-tab="whatsapp">
-          <img src="icons8-whatsapp-48.png" alt="whatsapp">WhatsApp Detection
+          <img src="icons8-whatsapp-48.png" alt="WhatsApp spam detection icon" width="24" height="24"
+            loading="lazy">WhatsApp Detection
         </button>
         <button class="detection-tab" data-tab="gmail">
-          <img src="icons8-gmail-100.png" alt="gmail">Email Detection
+          <img src="icons8-gmail-100.png" alt="Email spam detection icon" width="24" height="24"
+            loading="lazy">Email Detection
         </button>
         <button class="detection-tab" data-tab="sms">
-          <img src="icons8-message-48.png" alt="sms">SMS Detection
+          <img src="icons8-message-48.png" alt="SMS spam detection icon" width="24" height="24"
+            loading="lazy">SMS Detection
         </button>
       </div>
 
@@ -120,14 +145,13 @@
         <div class="terms-group">
           <input type="checkbox" id="wa-terms" class="terms-checkbox">
           <label for="wa-terms" class="terms-label">
-            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
-              href="privacy-policy.html" target="_blank">Privacy Policy</a>
+            I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a> and
+            <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
             <p>
               By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
               The service is provided "as is" without warranties, and you use it at your own risk.
               Please review results carefully before relying on them.
             </p>
-
           </label>
         </div>
 
@@ -155,9 +179,9 @@
         <div class="terms-group">
           <input type="checkbox" id="email-terms" class="terms-checkbox">
           <label for="email-terms" class="terms-label">
-            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
-              href="privacy-policy.html" target="_blank">Privacy Policy</a>
-              <p>
+            I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a> and
+            <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            <p>
               By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
               The service is provided "as is" without warranties, and you use it at your own risk.
               Please review results carefully before relying on them.
@@ -190,9 +214,9 @@
         <div class="terms-group">
           <input type="checkbox" id="sms-terms" class="terms-checkbox">
           <label for="sms-terms" class="terms-label">
-            I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a
-              href="privacy-policy.html" target="_blank">Privacy Policy</a>
-              <p>
+            I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a> and
+            <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            <p>
               By using this service, you acknowledge that our AI detection system may not be 100% accurate and can make mistakes.
               The service is provided "as is" without warranties, and you use it at your own risk.
               Please review results carefully before relying on them.
@@ -206,7 +230,6 @@
       </div>
     </div>
   </section>
-
 
   <section class="why-section" id="ws">
     <div class="section-container">
@@ -232,42 +255,40 @@
             <p>
               We fight against spam because not every platform gives you full protection.
               Gmail has a built-in spam folder, and Truecaller helps identify unknown numbers,
-              but there’s no reliable way to detect spam on WhatsApp messages or across all
-              platforms together. That’s why we built <strong>SayNoToSpam</strong> — a single tool
+              but there's no reliable way to detect spam on WhatsApp messages or across all
+              platforms together. That's why we built <strong>SayNoToSpam</strong> — a single tool
               that helps you check and detect spam in <strong>Gmail, WhatsApp, SMS </strong>
               easily and safely.
             </p>
             <p style="margin-top: 1rem;">
               With SayNoToSpam, we aim to reduce such losses by helping people identify and avoid
-              digital scams before it’s too late.
+              digital scams before it's too late.
             </p>
           </div>
 
           <div class="why-image">
-            <img src="Gemini_Generated_Image_mclyw7mclyw7mcly (1).png" alt="People fighting spam illustration">
+            <img src="Gemini_Generated_Image_mclyw7mclyw7mcly (1).png" alt="Illustration of people identifying and blocking spam messages"
+              width="600" height="400" loading="lazy">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
   <section class="target-section" id="ts">
     <div class="section-container">
       <div class="section-header">
         <h2 class="section-title"><b>How we target spam</b></h2>
         <p class="description-text" style="max-width: 800px; margin: 1rem auto 0; text-align: center;">
-          <strong>SayNoToSpam</strong> A message, number, or email is flagged as spam based on a combination of
-          automated AI analysis and predefined rules, users can request
-          a review after Analyze the result.
+          <strong>SayNoToSpam</strong> flags a message, number, or email as spam based on a combination of
+          automated AI analysis and predefined rules. Users can request a review after the result is shown.
         </p>
-
       </div>
       <div class="methods-grid">
         <div class="method-card">
           <div class="method-icon">🎯</div>
           <h3 class="method-title">Automated detection</h3>
-          <p class="method-desc">Our automated systems use billions of user search results and AI to detect
+          <p class="method-desc">Our automated systems use AI models trained on known spam patterns to detect
             and filter out spammy content.</p>
         </div>
         <div class="method-card">
@@ -298,8 +319,8 @@
         <ul class="footer-list">
           <li><a href="contact-us.html">Contact Us</a></li>
           <li><a href="newsletter-signup.html">Newsletter Signup</a></li>
-          <li><a href="linkedin.html">Follow on LinkedIn</a></li>
-          <li><a href="twitter.html">Follow on Twitter</a></li>
+          <li><a href="linkedin.html" rel="noopener">Follow on LinkedIn</a></li>
+          <li><a href="twitter.html" rel="noopener">Follow on Twitter</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -325,10 +346,9 @@
           <li><a href="email-protection.html">Email Protection</a></li>
           <li><a href="messaging-security.html">Messaging Security</a></li>
           <li><a href="fraud-detection.html">Fraud Detection</a></li>
-          <li><a href="whatsapp.html">whatsApp</a></li>
+          <li><a href="whatsapp.html">WhatsApp Spam Detection</a></li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h4 class="footer-heading">Startup</h4>
         <ul class="footer-list">
@@ -338,13 +358,11 @@
           <li><a href="terms-of-service.html">Terms of Service</a></li>
         </ul>
       </div>
-
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 <b>SayNoToSpam</b>. All rights reserved.</p>
     </div>
   </footer>
-
 
   <script>
     // Tab switching
@@ -488,7 +506,7 @@
       }
     });
 
-    // SMS Analysis - ADD THIS MISSING FUNCTIONALITY
+    // SMS Analysis
     document.getElementById('sms-analyze').addEventListener('click', async () => {
       const sender = document.getElementById('sms-sender').value.trim();
       const content = document.getElementById('sms-content').value.trim();
@@ -525,7 +543,7 @@
             'sms-result',
             isSpam ? 'spam' : 'safe',
             isSpam ? '🚫' : '✅',
-            isSpam ? 'Spam Detected' : 'SMS Appears Safe',
+            isSpam ? 'SMS Detected' : 'SMS Appears Safe',
             `
               <p><strong>Confidence:</strong> ${confidence}</p>
               <p><strong>Recommendation:</strong> ${recommendation}</p>
@@ -546,19 +564,15 @@
 
     // Terms and conditions functionality
     document.addEventListener('DOMContentLoaded', function () {
-      // WhatsApp terms
       const waTerms = document.getElementById('wa-terms');
       const waAnalyze = document.getElementById('wa-analyze');
 
-      // Email terms
       const emailTerms = document.getElementById('email-terms');
       const emailAnalyze = document.getElementById('email-analyze');
 
-      // SMS terms
       const smsTerms = document.getElementById('sms-terms');
       const smsAnalyze = document.getElementById('sms-analyze');
 
-      // Enable/disable buttons based on checkbox state
       if (waTerms && waAnalyze) {
         waTerms.addEventListener('change', function () {
           waAnalyze.disabled = !this.checked;
@@ -577,16 +591,12 @@
         });
       }
 
-      // Reset terms when switching tabs
       const tabs = document.querySelectorAll('.detection-tab');
       tabs.forEach(tab => {
         tab.addEventListener('click', function () {
-          // Uncheck all terms checkboxes when switching tabs
           document.querySelectorAll('.terms-checkbox').forEach(checkbox => {
             checkbox.checked = false;
           });
-
-          // Disable all analyze buttons
           document.querySelectorAll('.analyze-button').forEach(button => {
             button.disabled = true;
           });
@@ -596,7 +606,4 @@
   </script>
 </body>
 
-
 </html>
-
-
